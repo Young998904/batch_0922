@@ -1,8 +1,8 @@
 spring:
   batch:
     job:
-      names: ${job.name:helloWorldJob}
-#      ???? ?? ??
+      names: ${job.name:withParamJob}
+#      jobBuilderFactory.get("<??>") ? ??
     jdbc:
       initialize-schema: ALWAYS
 #      spring batch ?? db
