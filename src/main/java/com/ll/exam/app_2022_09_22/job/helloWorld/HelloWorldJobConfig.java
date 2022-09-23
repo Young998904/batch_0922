@@ -55,12 +55,7 @@ public class HelloWorldJobConfig {
     @StepScope // 해당 Step 이 실행될 때 생성
     public Tasklet helloWorldStep1Tasklet () {
         return (contribution, chunkContext) -> {
-                System.out.println("헬로 월드 테스크릿 1 수정본!");
-
-                if (true) {
-                    throw new Exception("실패 : 테스크릿 1");
-                }
-
+                System.out.println("헬로 월드 테스크릿 1!");
                 return RepeatStatus.FINISHED;
         };
     }
