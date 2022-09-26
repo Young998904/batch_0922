@@ -3,7 +3,6 @@ package com.ll.exam.app_2022_09_22.app.product.entity;
 import static javax.persistence.CascadeType.ALL;
 
 import com.ll.exam.app_2022_09_22.app.base.entity.BaseEntity;
-import com.ll.exam.app_2022_09_22.app.product.entity.ProductOption.ProductOption;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.OneToMany;
