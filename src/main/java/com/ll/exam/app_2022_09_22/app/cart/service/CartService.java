@@ -4,6 +4,7 @@ import com.ll.exam.app_2022_09_22.app.cart.entity.CartItem;
 import com.ll.exam.app_2022_09_22.app.cart.repository.CartItemRepository;
 import com.ll.exam.app_2022_09_22.app.member.entity.Member;
 import com.ll.exam.app_2022_09_22.app.product.entity.ProductOption;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +30,13 @@ public class CartService {
         cartItemRepository.save(cartItem);
 
         return cartItem;
+    }
+
+    public List<CartItem> getItemsByMember(Member member) {
+        return cartItemRepository.findAllByMemberId(member.getId());
+    }
+
+    public void deleteItem(CartItem cartItem) {
+        cartItemRepository.delete(cartItem);
     }
 }
