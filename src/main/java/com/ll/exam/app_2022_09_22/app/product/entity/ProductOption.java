@@ -21,7 +21,10 @@ import lombok.experimental.SuperBuilder;
 public class ProductOption extends BaseEntity {
     private String color;
     private String size;
+    private String displayColor;
+    private String displaySize;
     private int price; // 옵션에 따라 추가 비용 발생 가능
+    private int wholesalePrice; // 도매
 
     @ManyToOne(fetch = LAZY)
     @ToString.Exclude
@@ -32,7 +35,9 @@ public class ProductOption extends BaseEntity {
 
     public ProductOption(String color, String size) {
         this.color = color;
+        this.displayColor = color;
         this.size = size;
+        this.displaySize = size;
     }
 
     public boolean isOrderable(int quantity) {
