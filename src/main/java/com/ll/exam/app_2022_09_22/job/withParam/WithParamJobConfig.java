@@ -25,23 +25,37 @@ public class WithParamJobConfig {
             .start(withParamStep1)
             .build();
     }
+
+    // 인자값 넘겨줄 때 방법 1
     @Bean
     @JobScope // 해당 JOB 이 실행될 때 생성
     public Step withParamStep1(Tasklet withParamStep1Tasklet) {
+        // withParamStep1Tasklet 을 받아올라면 해당 태스크릿이 Bean 으로 등록 되어있어야 함
         return stepBuilderFactory
             .get("withParamStep1")
             .tasklet(withParamStep1Tasklet)// 방법 (1) tasklet (2) item
             .build();
     }
 
+//    // 인자값 넘겨줄 때 방법 2
+//    @Bean
+//    @JobScope
+//    public Step withParamStep1() {
+//        return stepBuilderFactory
+//            .get("withParamStep1")
+//            .tasklet(withParamStep1Tasklet(null, null))
+//            .build();
+//    }
+//    // 실행 시켜 보면 테스크릿 출력값 null, null 로 나옴 => 방법 1 이 맞음!
+
     @Bean
     @StepScope // 해당 Step 이 실행될 때 생성
     public Tasklet withParamStep1Tasklet (
-        @Value ("#{jobParameters['age']}") int age,
+        @Value ("#{jobParameters['age']}") Integer age,
         @Value ("#{jobParameters['name']}") String name
     ) {
         return (contribution, chunkContext) -> {
-            System.out.println("WithParam 테스트릿 1, %s, %d".formatted(name,age));
+            System.out.println("WithParam 태스크릿 1, %s, %d".formatted(name,age));
 
             return RepeatStatus.FINISHED;
         };
