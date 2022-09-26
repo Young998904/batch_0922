@@ -2,10 +2,10 @@ spring:
   batch:
     job:
       names: ${job.name:withParamJob}
-#      ${job.name:<??>}job.name ? ??? : ?? ?????? ??
-#      jobBuilderFactory.get("<??>") ? ??
+#      ${job.name:<잡 이름>}job.name 이 없으면 : 뒤에 있는 잡을 실행한다.
+#      jobBuilderFactory.get("<잡 이름>") 을 의미
 
-#    --spring.batch.job.names=helloWorldJob ? Application Cofiguration ? ?????? ?? ??
+#    --spring.batch.job.names=helloWorldJob 을 입력하여 Application Cofiguration 을 통해 인자값 넘겨줌
     jdbc:
       initialize-schema: ALWAYS
 #      spring batch ?? db
