@@ -20,8 +20,9 @@ import javax.persistence.Entity;
 @SuperBuilder
 @ToString(callSuper = true)
 public class Product extends BaseEntity {
-    private int price;
-    private int wholesalePrice;
+    private int salePrice; // 판매가
+    private int price; // 소비자가
+    private int wholesalePrice; // 도매가
     private String name;
     private String makerShopName;
 
@@ -34,6 +35,7 @@ public class Product extends BaseEntity {
     public void addOption(ProductOption option) {
         option.setProduct(this);
         option.setPrice(getPrice());
+        option.setSalePrice(getSalePrice());
         option.setWholesalePrice(getWholesalePrice());
 
         productOptions.add(option);

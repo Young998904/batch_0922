@@ -24,6 +24,7 @@ public class ProductOption extends BaseEntity {
     private String displayColor;
     private String displaySize;
     private int price; // 옵션에 따라 추가 비용 발생 가능
+    private int salePrice;
     private int wholesalePrice; // 도매
 
     @ManyToOne(fetch = LAZY)
